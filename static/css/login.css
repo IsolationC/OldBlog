@@ -1,0 +1,43 @@
+#login-form{
+    width: 400px;
+    height: 150px;
+    margin: 100px auto;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+
+}
+
+#login-form td{
+    padding: 5px;
+}
+
+#login-form h3{
+    text-align: center;
+}
+
+#login-form table{
+    width: 100%;
+}
+
+#login-form .label{
+    width: 50%;
+    text-align: right;
+}
+
+#login-form .input {
+    width: 50%;
+}
+
+#login-form .button{
+    text-align: center;
+}
+
+#login-form .submit{
+    border: 0;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    background: #6dbbf4;
+    color: #ffffff;
+
+}

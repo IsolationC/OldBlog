@@ -1,0 +1,101 @@
+{% set username = session.get('username') %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章详情</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/article.css">
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <div id="content">
+        <div id="article">
+            <h3 class = title>{{ article.title }}</h3>
+            <span class="post-time">{{ article.post_time }}</span>
+            <span class="type">{{ article.type_name }}</span>
+            <p class="desc">{{ article.content }}</p>
+            <hr style="height:1px;border:none;border-top:1px dashed #abd1f4;" />
+        </div>
+
+        <div id="comment">
+            <h3 class="title">评论：</h3>
+            <div id="comment_list">
+                {% for comment in comments %}
+                <div class="comment">
+                    <div class="user-info">
+                        <img src="{{ comment.portrait }}" alt="" class="user-portrait">
+                        <br>
+                        <span class="username">{{ comment.username }}</span>
+                    </div>
+                    <p class="content">{{ comment.content }}</p>
+                    <br>
+                    <span class="post-time">{{ comment.post_time }}</span>
+                </div>
+                {% endfor %}
+            </div>
+            <div id="reply-comment">
+                <form action="/comment" method="post">
+                    <h3 class="title">写评论：</h3>
+                    <p>
+                        <textarea name="new_comment" id="" cols="70" rows="10"></textarea>
+                    </p>
+                    <p>
+                        <input class="btn-commtent" type="button" data-id="{{ article.article_id }}" value="评论" >
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="dialog-mask">
+        <div id="dialog-content">
+            <div id="dialog-header">
+                <span id="dialog-close">[X]</span>
+                <h3 >登录</h3>
+            </div>
+            <div id="dialog-body">
+                <p>
+                    用户名：<input class="user" type="text">
+                </p>
+                <p>
+                    密码：<input class="key" type="password">
+                </p>
+                <p>
+                    <input class="login_btn" type="button" value="登录" >
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/js/jquery-1.11.3.min.js"></script>
+
+    <script>
+        $(function () {
+            $('.btn-commtent').on('click', function () {
+                var articleId = $(this).data('id');
+                $.get('/check_login', function(res){
+                    if(res == 'ok'){
+                        location.href = '/comment?articleId='+articleId;
+                        $.get('/comment', function (resp) {
+                            if(resp == 'ok'){
+                                alert('评论成功！')
+                                location.href = '/article?articleId='+articleId;
+                            }
+                            else
+                                alert('评论失败..')
+                        })
+                    }else{
+                        $('#dialog-mask').show();
+                    }
+                }, 'text');
+            });
+            $('#dialog-close').on('click', function () {
+                $('#dialog-mask').hide();
+            });
+        });
+    </script>
+
+</body>
+</html>

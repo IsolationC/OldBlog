@@ -1,0 +1,41 @@
+#content{
+    margin: 70px auto;
+    width: 1000px;
+}
+#articles{
+    width: 65%;
+    float: left;
+}
+#article-type{
+    width: 20%;
+    float: right;
+}
+#article-type .classify{
+    background-image: url(kuang2.png);
+    color: #ffffff;
+}
+#type-list{
+    margin-top: 10px;
+}
+.article{
+    margin-bottom: 20px;
+}
+.article .title{
+    margin-bottom: 15px;
+}
+.article .post-time{
+    margin-right: 15px;
+}
+.article .desc{
+    margin-top: 15px;
+}
+
+.load-more{
+    width: 200px;
+    height: 35px;
+    background: #6dbbf4;
+    color: white;
+    text-align: center;
+    line-height: 35px;
+    margin: 0 auto;
+}

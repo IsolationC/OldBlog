@@ -1,0 +1,17 @@
+
+<div id="header">
+    <img class="logo" src="static/image/cube.png" alt="">
+    <h3 class="title">我的小家</h3>
+    <ul id="menu">
+        <li><a href="/">首页</a></li>
+        <li><a href="/list_article">我的文章</a></li>
+        <li><a href="#">联系我</a></li>
+        <li>
+            {% if username %}
+                欢迎： {{ username }}
+            {% else %}
+            <a href="/login">登录</a> | <a href="/regist">注册</a>
+            {% endif %}
+        </li>
+    </ul>
+</div>

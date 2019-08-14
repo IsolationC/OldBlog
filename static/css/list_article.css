@@ -1,0 +1,8 @@
+#type-list li{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#article-list{
+    margin-top: 20px;
+}

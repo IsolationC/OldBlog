@@ -1,0 +1,55 @@
+#content{
+    width: 800px;
+    margin: 70px auto;
+}
+.title2{
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+#article .post-time{
+    font-size: 15px;
+    margin-right: 10px;
+    color: #6d6d6d;
+}
+#article .desc{
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+#comment{
+    margin-top: 30px;
+}
+#comment .title{
+    color: white;
+    margin-bottom: 10px;
+    background-image: url(框框1.png);
+}
+.comment{
+    height: 120px;
+    border: 1px solid #c6e2f4;
+    margin-bottom: 5px;
+}
+.comment .user-portrait{
+    width: 50px;
+    height: 50px;
+    border: 2px solid #6dbbf4;
+}
+.comment .user-info{
+    margin: 5px 5px;
+    text-align: center;
+    float: left;
+}
+.comment .post-time{
+    font-size: 15px;
+    color: #6d6d6d;
+}
+#comment_list{
+    margin-bottom: 15px;
+}
+#reply-comment .btn-commtent{
+    border: none;
+    width: 60px;
+    height: 25px;
+    line-height: 30px;
+    background: #6dbbf4;
+    color: #ffffff;
+}

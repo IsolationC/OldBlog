@@ -1,0 +1,61 @@
+{% set username = session.get('username') %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/index.css">
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <div id="content">
+        <div id="articles">
+            <div id="article-list">
+
+
+            </div>
+            <div class="load-more" id="load-more">
+                加载更多...
+            </div>
+        </div>
+
+        <div id="article-type">
+            <h3 class="classify">文章分类:</h3>
+            <ul id="type-list">
+                {% for type in types %}
+                    <li><a href="/list_article?typeId={{ type.type_id }}">{{ type.type_name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <script src="static/js/jquery-1.11.3.min.js"></script>
+    <script>
+        $(function () {
+            var page = 0; //当前页数
+            $('#load-more').on('click', function () {
+                $('#load-more').hide();
+                $.get('/get_articles', {pageNo: page++}, function (res) {
+                    for(var i=0; i<res.length; i++){
+                        var article = res[i];
+                        var str = `<div class="article">
+                                        <h3 class="title">
+                                            <a href="/article?articleId=`+article.article_id+`">`+article.title+`</a>
+                                        </h3>
+                                        <span class="post-time">`+new Date(article.post_time).toLocaleDateString()+`</span><span class="type">`+article.type_name+`</span>
+                                        <p class="desc">`+article.content+`</p>
+                                        <br>
+                                        <hr style="height:1px;border:none;border-top:1px dashed #abd1f4;" />
+                                   </div>`;
+
+                        $('#article-list').append(str);
+                    }
+                    $('#load-more').show();
+                }, 'json');
+            });
+            $('#load-more').click()
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+/*这是公共样式*/
+/*样式重置*/
+*{
+    margin: 0;
+    padding: 0;
+}
+ul, ol{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+img{
+    border: 0;
+}
+#header{
+    height: 50px;
+    background: #6dbbf4;
+    position: relative;
+}
+
+#header .logo{
+    width: 43px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 15px;
+}
+#header .title{
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+}
+#menu {
+    float: right;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+#menu li{
+    float: left;
+    margin-right: 15px;
+    color: white;
+}
+
+#menu a{
+    color: white;
+}
+
+#dialog-mask{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.3);
+    display: none;
+}
+#dialog-content{
+    width: 400px;
+    height: 200px;
+    background: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+}
+
+
+#dialog-header{
+    text-align: center;
+    margin-top: 15px;
+}
+
+
+#dialog-body p{
+    text-align: center;
+}
+
+#dialog-body .user {
+    width: 50%;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+#dialog-body .key {
+    width: 50%;
+    margin-bottom: 20px;
+}
+#dialog-content .login_btn{
+    border: 0;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    background: #6dbbf4;
+    color: #ffffff;
+}
+
+#dialog-close{
+    float: right;
+    margin-right: 10px;
+    margin-top: -10px;
+    cursor: pointer;
+    color: red;
+}

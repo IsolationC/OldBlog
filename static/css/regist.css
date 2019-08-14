@@ -1,0 +1,43 @@
+#regist-form{
+    width: 400px;
+    height: 300px;
+    margin: 100px auto;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+
+}
+
+#regist-form td{
+    padding: 5px;
+}
+
+#regist-form h3{
+    text-align: center;
+}
+
+#regist-form table{
+    width: 100%;
+}
+
+#regist-form .label{
+    width: 50%;
+    text-align: right;
+}
+
+#regist-form .input {
+    width: 50%;
+}
+
+#regist-form .button{
+    text-align: center;
+}
+
+#regist-form .submit{
+    border: 0;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    background: #6dbbf4;
+    color: #ffffff;
+
+}

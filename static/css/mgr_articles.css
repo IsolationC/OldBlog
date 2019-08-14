@@ -1,0 +1,45 @@
+#wrapper{
+    width: 1170px;
+    margin: 50px auto;
+}
+
+#admin-menu{
+    width: 140px;
+    float: left;
+    background: #abd1f4;
+}
+#admin-menu .ul{
+    margin-left: 20px;
+}
+#content{
+    margin-left: 220px;
+}
+#buttons{
+    margin-bottom: 20px;
+}
+#tbl{
+    width: 100%;
+    border: 1px solid #000000;
+    border-collapse: collapse;
+}
+#tbl th, #tbl td{
+    border: 1px solid #2e83f4;
+}
+
+#btn-delete{
+    border: 0;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    background: #f49069;
+    color: #ffffff;
+}
+#btn-new{
+    border: 0;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    background: #4ff4ee;
+    color: #ffffff;
+    margin-right: 10px;
+}

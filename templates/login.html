@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的小家 - 登录</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/login.css">
+</head>
+<body>
+    <div id="login-form">
+        <h3>登录</h3>
+        {#table>tr*7>td*2#}
+        <form action="/login" method="post">
+            <table>
+                <tr>
+                    <td class="label">用户名：</td>
+                    <td class="input">
+                        <input type="text" name="username" id="username">
+                        <span id="tip"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">密码：</td>
+                    <td><input type="password" name="password" id="password">
+                        <span id="tip2"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="button" colspan="2">
+                        <input class="submit" type="submit" value="登录">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <script src="static/js/jquery-1.11.3.min.js"></script>
+    <script>
+
+        // 文档就绪函数
+        $(function () {
+            var bSubmit = false;//一个标识位，用来标识是否允许提交，true可以提交，false不可以
+
+            // 为#username绑定焦点离开事件
+           $('#username').on('blur', function () {
+               if(this.value == ""){
+                  $('#tip').html('用户名不能为空!');
+               }else{
+                    bSubmit = true;
+               }
+           })
+
+            $('#password').on('blur', function () {
+                if(this.value == ""){
+                    $('#tip2').html('密码不能为空!');
+                    bSubmit = false;
+                }else{
+                    bSubmit = true;
+                }
+            })
+
+           $('#myform').on('submit', function () {
+
+               if(bSubmit == false){
+                   alert('请填写正确和完整信息!');
+                   return false;
+               }
+
+               return true;
+           });
+
+        });
+    </script>
+</body>
+</html>

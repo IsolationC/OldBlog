@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的小家 - 文章管理</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/mgr_articles.css">
+
+</head>
+<body>
+    {% include 'header.html' %}
+    <div id="wrapper">
+        <div id="admin-menu">
+            <ul>
+                <li><a href="#">修改资料</a></li>
+                <li><a href="#">文章管理</a></li>
+                <li><a href="#">评论管理</a></li>
+                <li><a href="#">留言管理</a></li>
+            </ul>
+        </div>
+        <div id="content">
+            <div id="buttons">
+                <input id="btn-new" type="button" value="发表文章">
+                <input id="btn-delete" type="button" value="删除文章" >
+            </div>
+            <table id="tbl">
+                <tr>
+                    <th><input type="checkbox"></th>
+                    <th>标题</th>
+                    <th>发表时间</th>
+                    <th>所属分类</th>
+                    <th>操作</th>
+                </tr>
+                {% for article in articles %}
+                    <tr>
+                        <td><input type="checkbox" name="articleId" value="{{ article.article_id }}"></td>
+                        <td>{{ article.title }}</td>
+                        <td>{{ article.post_time }}</td>
+                        <td>{{ article.type_name }}</td>
+                        <td>
+                            <a href="#">编辑</a>
+                            |
+                            <a href="#" class="delete" data-id="{{ article.article_id }}">删除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+    <script src="static/js/jquery-1.11.3.min.js"></script>
+    <script>
+        $(function () {
+            $('.delete').on('click', function () {
+                var articleId = $(this).data('id');
+               if(confirm('确定要删除该记录吗？')){
+                    location.href = '/delete_article?articleId='+articleId
+               }
+            });
+            $('#btn-delete').on('click', function () {
+                if(confirm('确定要删除选中的记录吗？')){
+                    var str = "";
+                    $('[name=articleId]:checked').each(function () {
+                        str += this.value + ','
+                    });
+                    str = str.substring(0, str.length-1);
+                    $.get('/delete_articles', {articleIds: str}, function (res) {
+                        if(res == 'ok'){
+                            $('[name=articleId]:checked').parents('tr').remove();
+                        }
+                    }, 'text')
+                }
+            });
+        });
+    </script>
+</body>
+</html>

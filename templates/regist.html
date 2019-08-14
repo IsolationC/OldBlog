@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的小家 - 注册</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/regist.css">
+</head>
+<body>
+    <div id="regist-form">
+        <h3>注册</h3>
+        <form action="regist.html" method="post" id="myform">
+
+            <table>
+            <tr>
+                <td class="label">用户名：</td>
+                <td class="input"><input type="text" name="username" id="username"><span id="tip">{{ error }}</span></td>
+            </tr>
+            <tr>
+                <td class="label">密码：</td>
+                <td><input type="password" name="password" id="password"></td>
+            </tr>
+            <tr>
+                <td class="label">确认密码：</td>
+                <td><input type="password" name="confirmPass" id="confirm-pass"><span id="tip2">{{ error2 }}</span></td>
+            </tr>
+            <tr>
+                <td class="label">性别：</td>
+                <td>
+                    <input type="radio" name="sex" value="男">男
+                    <input type="radio" name="sex" value="女">女
+                </td>
+            </tr>
+            <tr>
+                <td class="label">头像：</td>
+                <td><input type="file" name="portrait" value="static/upload/unset.png"></td>
+            </tr>
+            <tr>
+                <td class="label">邮箱：</td>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td class="button" colspan="2"><input class="submit" type="submit" value="注册"></td>
+            </tr>
+        </table>
+        </form>
+    </div>
+
+<script src="static/js/jquery-1.11.3.min.js"></script>
+    <script>
+        // 文档就绪函数
+        $(function(){
+            var bSubmit = false;
+            // 为#username绑定焦点离开事件
+            $('#username').on('blur', function(){
+                if(this.value == ""){
+                    $('#tip').html('不能为空！')
+                }
+                else{
+                    //$.get(url, data, function, dateType)
+                    $.get('/check_name', {uname: this.value}, function (res) {  //回调函数，返回的任何值都给res
+                    if(res=='success'){
+                        $('#tip').html('√')
+                        bSubmit = true;
+                    }else{
+                        $('#username').css('border',"1px solid #F00")
+                        $('#tip').html('X')
+                    }
+
+                    }, 'text')
+                }
+
+            });
+
+            $('#confirm-pass').on('blur', function() {
+                var password = $('#password').val();
+                var confirmPass = this.value;
+                bSubmit = true;
+                if (password != confirmPass) {
+                    $('#tip2').html('两次密码不一致！')
+                }
+            });
+
+            $('#myform').on('submit', function(){//两种类型来回切换时用bool型变量
+            if(bSubmit == false){
+                alert('请填写正确的信息！');
+                return false;
+            }
+            return true;
+            });
+
+
+        });
+
+    </script>
+</body>
+</html>
